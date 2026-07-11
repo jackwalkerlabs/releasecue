@@ -1,0 +1,20 @@
+name: Actions breakage radar
+
+on:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 9 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Scan workflow dependencies
+        uses: jackwalkerlabs/actions-breakage-radar@v1
+        with:
+          fail-on-findings: false
