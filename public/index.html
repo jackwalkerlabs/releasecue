@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A private recurring release checklist workspace for small software teams.">
+  <title>ReleaseCue — Run every release without relying on memory</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span>RC</span> ReleaseCue</a>
+    <p class="signal"><i></i> Release run control</p>
+    <button id="logout" class="text-button" type="button" hidden>Log out</button>
+  </header>
+
+  <main>
+    <section id="auth-surface" class="auth-surface">
+      <div class="hero">
+        <p class="eyebrow">FOR SMALL SOFTWARE TEAMS + MAINTAINERS</p>
+        <h1>Your release process is too rare to live in memory.</h1>
+        <p class="lede">Turn the checklist in a stale doc into a release run you can actually finish: owner, target date, tasks, decisions, and a hard ready gate.</p>
+        <ol class="proof-list">
+          <li><b>01</b><span>Choose a reusable checklist during setup.</span></li>
+          <li><b>02</b><span>Run tasks and log release decisions in one place.</span></li>
+          <li><b>03</b><span>Return next release with the full history intact.</span></li>
+        </ol>
+        <p class="evidence">Built against live reports of “borked” releases, manual RC promotion, undocumented steps, and workflows too infrequent to internalize.</p>
+        <p class="privacy"><strong>Private workspace.</strong> We store your username, a one-way password hash, and the release metadata you enter. Never enter credentials, secrets, or regulated data. No email, payment, repository access, or third-party analytics.</p>
+      </div>
+      <div class="auth-card">
+        <div class="tabs" role="tablist">
+          <button id="show-register" class="active" type="button">Set up workspace</button>
+          <button id="show-login" type="button">Return</button>
+        </div>
+        <form id="register-form">
+          <p class="step">ONBOARDING / SETUP</p>
+          <h2>Create your release room</h2>
+          <label>Workspace name<input name="workspaceName" maxlength="60" required placeholder="Acme release room"></label>
+          <label>Default checklist<select name="template" required><option value="web-app">Web app</option><option value="package">Package / library</option><option value="mobile">Mobile app</option><option value="blank">Blank run</option></select></label>
+          <label>Username<input name="username" minlength="3" maxlength="32" pattern="[a-z0-9][a-z0-9-]{2,31}" required placeholder="acme-team" autocomplete="username"></label>
+          <label>Password<input name="password" type="password" minlength="12" maxlength="128" required autocomplete="new-password" placeholder="12+ characters"></label>
+          <button class="primary" type="submit">Create private workspace →</button>
+          <p class="form-note">Free validation build. No password recovery yet—do not reuse a critical password.</p>
+        </form>
+        <form id="login-form" hidden>
+          <p class="step">RETURNING USER</p>
+          <h2>Open your release room</h2>
+          <label>Username<input name="username" required autocomplete="username"></label>
+          <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
+          <button class="primary" type="submit">Open workspace →</button>
+          <p class="form-note">Sessions expire after seven days.</p>
+        </form>
+        <p id="auth-message" class="message" role="alert"></p>
+      </div>
+    </section>
+
+    <section id="dashboard-surface" class="workspace" hidden>
+      <div class="workspace-head">
+        <div><p class="eyebrow">PERSISTENT RELEASE WORKSPACE</p><h1 id="workspace-title">Release room</h1><p>Every release run stays here until it ships or gets archived.</p></div>
+        <button id="pricing-interest" class="secondary pricing" type="button">Interested in GitHub sync · $9/mo</button>
+      </div>
+      <div id="dashboard-stats" class="stats" aria-live="polite"></div>
+      <div class="workspace-grid">
+        <aside class="create-panel">
+          <p class="step">NEW RELEASE RUN</p><h2>Start the next ship</h2>
+          <form id="create-release-form">
+            <label>Release name<input name="name" maxlength="80" required placeholder="July product release"></label>
+            <label>Version<input name="version" maxlength="40" pattern="[A-Za-z0-9][A-Za-z0-9._+\-]{0,39}" required placeholder="v2.4.0"></label>
+            <label>Release owner<input name="owner" maxlength="60" required placeholder="Maya"></label>
+            <label>Target date<input name="targetDate" type="date" required></label>
+            <button class="primary" type="submit">Create release run →</button>
+          </form>
+          <p id="create-message" class="message" role="alert"></p>
+        </aside>
+        <div class="register-panel">
+          <div class="register-head"><div><p class="step">RELEASE QUEUE</p><h2>Runs in motion</h2></div><label class="archive-toggle"><input id="include-archived" type="checkbox"> Show archive</label></div>
+          <div id="dashboard-loading" class="state">Loading your release queue…</div>
+          <div id="dashboard-error" class="state error-state" hidden><p>Could not load your releases. Your data was not changed.</p><button id="retry-dashboard" class="secondary" type="button">Try again</button></div>
+          <div id="dashboard-empty" class="state" hidden><strong>No release runs yet.</strong><p>Start with the next version you cannot afford to improvise.</p></div>
+          <div id="release-list" class="release-list" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="detail-surface" class="detail" hidden>
+      <button id="back-dashboard" class="back" type="button">← Back to release queue</button>
+      <div id="detail-loading" class="state">Loading release run…</div>
+      <div id="detail-error" class="state error-state" hidden><p>Could not load this release. It may be unavailable.</p><button id="retry-detail" class="secondary" type="button">Try again</button></div>
+      <div id="detail-content" hidden>
+        <div class="detail-head">
+          <div><p id="detail-version" class="eyebrow"></p><h1 id="detail-name"></h1><p id="detail-meta"></p></div>
+          <span id="detail-status" class="status-pill"></span>
+        </div>
+        <div class="progress"><span id="task-progress"></span><i><b id="task-progress-bar"></b></i></div>
+        <div class="detail-grid">
+          <article class="action-panel">
+            <p class="step">LIFECYCLE GATE</p><h2 id="action-title"></h2><p id="action-copy"></p>
+            <button id="lifecycle-action" class="primary" type="button"></button>
+            <p id="action-message" class="message" role="alert"></p>
+          </article>
+          <article class="tasks-panel">
+            <div class="panel-head"><div><p class="step">RUN CHECKLIST</p><h2>Release tasks</h2></div><span id="task-count" class="counter"></span></div>
+            <form id="add-task-form" class="inline-form"><input name="text" maxlength="160" required placeholder="Add a release-specific task"><button class="secondary" type="submit">Add</button></form>
+            <p id="task-message" class="message" role="alert"></p>
+            <div id="task-list" class="task-list"></div>
+          </article>
+          <article class="notes-panel">
+            <p class="step">DECISION LOG</p><h2>Release notes</h2>
+            <form id="add-note-form"><textarea name="text" maxlength="500" required placeholder="Capture a blocker, verification result, or handoff decision."></textarea><button class="secondary" type="submit">Log note</button></form>
+            <p id="note-message" class="message" role="alert"></p>
+            <ol id="note-list" class="note-list"></ol>
+          </article>
+          <article class="edit-panel">
+            <p class="step">RELEASE CONTROL</p><h2>Edit run</h2>
+            <form id="edit-release-form">
+              <label>Name<input name="name" maxlength="80" required></label>
+              <label>Version<input name="version" maxlength="40" pattern="[A-Za-z0-9][A-Za-z0-9._+\-]{0,39}" required></label>
+              <label>Owner<input name="owner" maxlength="60" required></label>
+              <label>Target date<input name="targetDate" type="date" required></label>
+              <div class="form-actions"><button class="secondary" type="submit">Save changes</button><button id="archive-release" class="danger" type="button">Archive</button></div>
+            </form>
+            <p id="edit-message" class="message" role="alert"></p>
+          </article>
+          <article class="history-panel"><p class="step">RUN HISTORY</p><h2>What changed</h2><ol id="history-list"></ol></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>ReleaseCue is a free validation experiment by Jack Walker Labs. It does not deploy code or connect to repositories.</p><a href="https://github.com/jackwalkerlabs" rel="noreferrer">Jack Walker Labs ↗</a></footer>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

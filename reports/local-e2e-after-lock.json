@@ -1,0 +1,62 @@
+{
+  "success": true,
+  "testedAt": "2026-07-11T03:04:30.326Z",
+  "base": "http://127.0.0.1:8892",
+  "operatorRecords": {
+    "workspaces": [
+      "verify-a-mrfs6mm2",
+      "verify-b-mrfs6mm2"
+    ],
+    "releaseId": "3298a53e-35bb-4fd4-81c7-e0c90f18ba83"
+  },
+  "checks": {
+    "anonymousList": 401,
+    "secureSessionCookie": true,
+    "register": 201,
+    "create": 201,
+    "addTask": 201,
+    "incompleteReadyGate": "Complete every task before marking this release ready.",
+    "tasksCompleted": 5,
+    "noteLogged": 1,
+    "lifecycle": [
+      "running",
+      "ready",
+      "shipped"
+    ],
+    "editVersion": "v0.0.verified",
+    "crossUserRead": 404,
+    "crossUserNestedWrite": 404,
+    "crossUserLifecycle": 404,
+    "logoutInvalidatedSession": true,
+    "returningUser": "verify-a-mrfs6mm2",
+    "returningReleaseCount": 1,
+    "archived": true,
+    "activeCountAfterArchive": 0,
+    "archiveCount": 1,
+    "intentRecorded": true
+  },
+  "metricsBefore": {
+    "uniqueVisitors": 1,
+    "workspacesCreated": 3,
+    "releasesCreated": 2,
+    "activatedWorkspaces": 2,
+    "releasesAdvanced": 6,
+    "pricingInterest": 1
+  },
+  "metricsAfter": {
+    "uniqueVisitors": 1,
+    "workspacesCreated": 5,
+    "releasesCreated": 3,
+    "activatedWorkspaces": 3,
+    "releasesAdvanced": 9,
+    "pricingInterest": 2
+  },
+  "operatorBaselineDelta": {
+    "uniqueVisitors": 0,
+    "workspacesCreated": 2,
+    "releasesCreated": 1,
+    "activatedWorkspaces": 1,
+    "releasesAdvanced": 3,
+    "pricingInterest": 1
+  }
+}
