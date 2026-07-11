@@ -1,9 +1,7 @@
 import { getStore } from '@netlify/blobs';
 import { createApi } from '../../src/api.js';
 
-let api;
-// Netlify v2 request handler; state is persisted in strongly consistent Blobs.
+// Netlify v2 request handler; refresh request-scoped Blob credentials on every invocation.
 export default async function handler(request) {
-  api ||= createApi({ store: getStore('releasecue', { consistency: 'strong' }) });
-  return api(request);
+  return createApi({ store: getStore('releasecue', { consistency: 'strong' }) })(request);
 }
