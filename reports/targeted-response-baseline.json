@@ -1,0 +1,42 @@
+{
+  "capturedAt": "2026-07-11T11:48:42Z",
+  "experiment": "ReleaseCue targeted maintainer distribution",
+  "target": "https://github.com/topiary/topiary/issues/856",
+  "comment": "https://github.com/topiary/topiary/issues/856#issuecomment-4945391276",
+  "qualification": {
+    "issueState": "open",
+    "assigned": false,
+    "problemFit": "The maintainer reports an error-prone release process that is too infrequent to internalize."
+  },
+  "rawMetrics": {
+    "uniqueVisitors": 8,
+    "workspacesCreated": 6,
+    "releasesCreated": 3,
+    "activatedWorkspaces": 3,
+    "releasesAdvanced": 9,
+    "pricingInterest": 3
+  },
+  "measurementHygiene": {
+    "originalLaunchBaseline": {
+      "uniqueVisitors": 5,
+      "workspacesCreated": 4,
+      "releasesCreated": 2,
+      "activatedWorkspaces": 2,
+      "releasesAdvanced": 6,
+      "pricingInterest": 2
+    },
+    "laterOperatorDelta": {
+      "uniqueVisitors": 0,
+      "workspacesCreated": 2,
+      "releasesCreated": 1,
+      "activatedWorkspaces": 1,
+      "releasesAdvanced": 3,
+      "pricingInterest": 1
+    },
+    "unattributedVisitorDelta": 3,
+    "confirmedExternalActivations": 0,
+    "confirmedExternalPricingInterest": 0,
+    "note": "One visitor appeared before the targeted comment. Two appeared during the comment/link verification window and may be operator-browser or GitHub unfurl traffic. None are claimed as human buyers."
+  },
+  "costUsd": 0
+}

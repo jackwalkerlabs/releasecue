@@ -124,9 +124,23 @@ Decision: STOP at the initial checkpoint under the predeclared rule (0 real acti
 - Unique-visitor counts are client-generated and include automated preview/browser traffic; activation and pricing-interest deltas are the decision metrics.
 - Netlify CLI's high-level deploy call returned `403 Forbidden`; deployment was completed through Netlify's authenticated digest upload API, including a bundled v2 function, then verified on a draft deploy and promoted. No spend or destructive workaround was used.
 
-## Highest-leverage next move
+## Targeted distribution follow-up — 2026-07-11
 
-Run one targeted distribution test where maintainers already discuss release process design (one relevant community thread or a small set of public issue maintainers, without spam), with the ask focused on completing one real release run. If that still produces zero activation, retire ReleaseCue and move to a different problem.
+The broad X launch showed only 2 signed-out views and no visible engagement, so one higher-intent test was run instead of adding features.
+
+The live candidate review rejected assigned release-automation work and routine release-checklist tickets. The selected thread was `topiary/topiary#856`: open, unassigned, and explicitly reporting a release workflow that can produce a “borked release” because it is not performed often enough to internalize.
+
+One disclosed, non-bulk comment contributed a concrete seven-gate prerelease sequence before mentioning ReleaseCue and asking for one dry-run critique:
+
+https://github.com/topiary/topiary/issues/856#issuecomment-4945391276
+
+The comment was verified publicly and through GitHub's API as authored by `jackwalkerlabs`. No follow-up will be sent unless invited.
+
+A fresh production re-verification passed 5/5 tests, rebuilt five assets, and exercised registration, secure sessions, a release run, tasks, readiness rejection, full lifecycle, archive, returning login, logout, and cross-user 404 isolation. Evidence: `reports/production-reverify-2026-07-11.json`.
+
+Current raw metrics are 8 visitors, 6 workspaces, 3 releases, 3 activated workspaces, 9 lifecycle advances, and 3 pricing-interest events. All stateful events remain operator verification. After subtracting the original launch baseline and the later re-verification delta, three raw visitors remain unattributed: one before this outreach and two during the comment/link verification window. The latter may be operator-browser or GitHub unfurl traffic. None are claimed as human buyers. Confirmed external activation and pricing interest remain zero. Evidence: `reports/targeted-response-baseline.json`.
+
+Decision: **ITERATE / targeted test active, no validated pull yet**. Hold product work. The next decision event is a maintainer reply, one external activated workspace, or a later clean measurement readback. If this targeted test produces no activation, retire ReleaseCue rather than polish it.
 
 ## Cost
 
