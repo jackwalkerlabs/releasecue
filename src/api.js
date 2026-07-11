@@ -6,6 +6,7 @@ const json = (body, status = 200, headers = {}) => new Response(JSON.stringify(b
     'content-type': 'application/json; charset=utf-8',
     'cache-control': 'no-store',
     'x-content-type-options': 'nosniff',
+    'x-releasecue-api': '1',
     ...headers,
   },
 });

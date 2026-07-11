@@ -2,6 +2,10 @@
 
 A private recurring release-run workspace for small software teams and open-source maintainers.
 
+Live validation build: https://releasecue.netlify.app
+
+Public source: https://github.com/jackwalkerlabs/releasecue
+
 ## Product surfaces
 
 1. Onboarding/setup: create a password-protected workspace and choose a default checklist.

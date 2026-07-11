@@ -1,0 +1,30 @@
+{
+  "capturedAt": "2026-07-11T03:30:38.492Z",
+  "windowStartedAt": "2026-07-11T03:24:10.767Z",
+  "launchPostAt": "2026-07-11T03:25:11.502Z",
+  "metrics": {
+    "uniqueVisitors": 5,
+    "workspacesCreated": 4,
+    "releasesCreated": 2,
+    "activatedWorkspaces": 2,
+    "releasesAdvanced": 6,
+    "pricingInterest": 2
+  },
+  "baseline": {
+    "uniqueVisitors": 5,
+    "workspacesCreated": 4,
+    "releasesCreated": 2,
+    "activatedWorkspaces": 2,
+    "releasesAdvanced": 6,
+    "pricingInterest": 2
+  },
+  "marketDelta": {
+    "uniqueVisitors": 0,
+    "workspacesCreated": 0,
+    "releasesCreated": 0,
+    "activatedWorkspaces": 0,
+    "releasesAdvanced": 0,
+    "pricingInterest": 0
+  },
+  "decision": "stop"
+}

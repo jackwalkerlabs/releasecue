@@ -1,0 +1,62 @@
+{
+  "success": true,
+  "testedAt": "2026-07-11T03:21:56.541Z",
+  "base": "https://6a51b6ac9c9d89c3c012dfa7--releasecue.netlify.app",
+  "operatorRecords": {
+    "workspaces": [
+      "verify-a-mrfst1ja",
+      "verify-b-mrfst1ja"
+    ],
+    "releaseId": "9e5ef998-6049-4b1f-aabc-d43d10826a62"
+  },
+  "checks": {
+    "anonymousList": 401,
+    "secureSessionCookie": true,
+    "register": 201,
+    "create": 201,
+    "addTask": 201,
+    "incompleteReadyGate": "Complete every task before marking this release ready.",
+    "tasksCompleted": 5,
+    "noteLogged": 1,
+    "lifecycle": [
+      "running",
+      "ready",
+      "shipped"
+    ],
+    "editVersion": "v0.0.verified",
+    "crossUserRead": 404,
+    "crossUserNestedWrite": 404,
+    "crossUserLifecycle": 404,
+    "logoutInvalidatedSession": true,
+    "returningUser": "verify-a-mrfst1ja",
+    "returningReleaseCount": 1,
+    "archived": true,
+    "activeCountAfterArchive": 0,
+    "archiveCount": 1,
+    "intentRecorded": true
+  },
+  "metricsBefore": {
+    "uniqueVisitors": 4,
+    "workspacesCreated": 0,
+    "releasesCreated": 0,
+    "activatedWorkspaces": 0,
+    "releasesAdvanced": 0,
+    "pricingInterest": 0
+  },
+  "metricsAfter": {
+    "uniqueVisitors": 4,
+    "workspacesCreated": 2,
+    "releasesCreated": 1,
+    "activatedWorkspaces": 1,
+    "releasesAdvanced": 3,
+    "pricingInterest": 1
+  },
+  "operatorBaselineDelta": {
+    "uniqueVisitors": 0,
+    "workspacesCreated": 2,
+    "releasesCreated": 1,
+    "activatedWorkspaces": 1,
+    "releasesAdvanced": 3,
+    "pricingInterest": 1
+  }
+}

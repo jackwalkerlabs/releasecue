@@ -1,0 +1,14 @@
+{
+  "capturedAt": "2026-07-11T03:24:10.767Z",
+  "deployId": "6a51b6ac9c9d89c3c012dfa7",
+  "url": "https://releasecue.netlify.app",
+  "metrics": {
+    "uniqueVisitors": 5,
+    "workspacesCreated": 4,
+    "releasesCreated": 2,
+    "activatedWorkspaces": 2,
+    "releasesAdvanced": 6,
+    "pricingInterest": 2
+  },
+  "note": "Baseline after all operator E2E and visual verification; subtract this from post-launch totals for market response."
+}
