@@ -130,7 +130,7 @@ The broad X launch showed only 2 signed-out views and no visible engagement, so 
 
 The live candidate review rejected assigned release-automation work and routine release-checklist tickets. The selected thread was `topiary/topiary#856`: open, unassigned, and explicitly reporting a release workflow that can produce a “borked release” because it is not performed often enough to internalize.
 
-One disclosed, non-bulk comment contributed a concrete seven-gate prerelease sequence before mentioning ReleaseCue and asking for one dry-run critique:
+One disclosed, non-bulk comment contributed a concrete seven-gate prerelease sequence before mentioning ReleaseCue and asking for one dry-run critique. The public copy explicitly states that ReleaseCue does not automate `cargo-dist`, refresh lockfiles, validate runners, publish crates, or replace the repository changes requested by the issue:
 
 https://github.com/topiary/topiary/issues/856#issuecomment-4945391276
 
