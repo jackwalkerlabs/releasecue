@@ -5,6 +5,12 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { build } from '../scripts/build.mjs';
 
+test('function refreshes the request-scoped Blob client instead of caching expiring credentials', async () => {
+  const wrapper = await readFile(new URL('../netlify/functions/api.mjs', import.meta.url), 'utf8');
+  assert.doesNotMatch(wrapper, /api\s*\|\|=/);
+  assert.match(wrapper, /createApi\(\{ store: getStore\('releasecue', \{ consistency: 'strong' \}\) \}\)\(request\)/);
+});
+
 test('client ships onboarding, persistent dashboard, and release action surfaces with recovery states', async () => {
   const [html, app, config] = await Promise.all([
     readFile(new URL('../public/index.html', import.meta.url), 'utf8'),
